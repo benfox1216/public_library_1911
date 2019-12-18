@@ -65,12 +65,18 @@ class LibraryTest < Minitest::Test
     
     mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
     
-    assert_equal false, dpl.checkout(mockingbird)
-    assert_equal false, dpl.checkout(jane_eyre)
+    assert_equal false, @dpl.checkout(mockingbird)
+    assert_equal false, @dpl.checkout(jane_eyre)
     
-    dpl.add_author(charlotte_bronte)
-    dpl.add_author(harper_lee)
+    @dpl.add_author(@charlotte_bronte)
+    @dpl.add_author(@harper_lee)
 
-    assert_equal true, dpl.checkout(jane_eyre)
+    assert_equal true, @dpl.checkout(jane_eyre)
+    @dpl.checkout(jane_eyre)
+    assert_equal [jane_eyre], @dpl.checked_out_books
+    
+    assert_equal false, @dpl.checkout(jane_eyre)
+    @dpl.checkout(jane_eyre)
+    assert_equal [jane_eyre], @dpl.checked_out_books
   end
 end
