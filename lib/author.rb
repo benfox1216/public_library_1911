@@ -1,5 +1,5 @@
 class Author
-  attr_reader :first_name, :last_name
+  attr_reader :name, :books
   
   def initialize(name)
     @name = "#{name[:first_name]} #{name[:last_name]}"

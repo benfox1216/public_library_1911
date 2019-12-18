@@ -4,6 +4,6 @@ class Book
   def initialize(book_info)
     @author = "#{book_info[:author_first_name]} #{book_info[:author_last_name]}"
     @title = book_info[:title]
-    @publication_date = book_info[:publication_date]
+    @publication_date = book_info[:publication_date][-4..-1]
   end
 end
