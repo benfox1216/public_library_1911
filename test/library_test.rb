@@ -44,4 +44,8 @@ class LibraryTest < Minitest::Test
     
     assert_instance_of Book, @dpl.books[3]
   end
+  
+  def test_it_can_give_publication_time_frame
+    assert_equal {:start=>"1847", :end=>"1857"}, dpl.publication_time_frame_for(charlotte_bronte)
+  end
 end
