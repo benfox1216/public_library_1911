@@ -20,4 +20,18 @@ class LibraryTest < Minitest::Test
     assert_equal [], @dpl.books
     assert_equal [], @dpl.authors
   end
+  
+  def test_it_can_add_authors
+    dpl.add_author(charlotte_bronte)
+    dpl.add_author(harper_lee)
+    
+    assert_equal [@charlotte_bronte, @harper_lee], dpl.authors
+  end
+  
+  def test_adding_authors_also_adds_their_books
+    dpl.add_author(charlotte_bronte)
+    dpl.add_author(harper_lee)
+    
+    assert_instance_of Book, dpl.books[3]
+  end
 end
