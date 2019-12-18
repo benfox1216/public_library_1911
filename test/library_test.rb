@@ -22,16 +22,26 @@ class LibraryTest < Minitest::Test
   end
   
   def test_it_can_add_authors
-    dpl.add_author(charlotte_bronte)
-    dpl.add_author(harper_lee)
+    @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+    professor = @charlotte_bronte.write("The Professor", "1857")
+    villette = @charlotte_bronte.write("Villette", "1853")
+    @dpl.add_author(@charlotte_bronte)
     
-    assert_equal [@charlotte_bronte, @harper_lee], dpl.authors
+    mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
+    @dpl.add_author(@harper_lee)
+    
+    assert_equal [@charlotte_bronte, @harper_lee], @dpl.authors
   end
   
   def test_adding_authors_also_adds_their_books
-    dpl.add_author(charlotte_bronte)
-    dpl.add_author(harper_lee)
+    @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+    professor = @charlotte_bronte.write("The Professor", "1857")
+    villette = @charlotte_bronte.write("Villette", "1853")
+    @dpl.add_author(@charlotte_bronte)
     
-    assert_instance_of Book, dpl.books[3]
+    mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
+    @dpl.add_author(@harper_lee)
+    
+    assert_instance_of Book, @dpl.books[3]
   end
 end
