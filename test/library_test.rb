@@ -1,10 +1,14 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/library'
+require './lib/author'
 
 class LibraryTest < Minitest::Test
   def setup
     @dpl = Library.new("Denver Public Library")
+    
+    @charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+    @harper_lee = Author.new({first_name: "Harper", last_name: "Lee"})
   end
   
   def test_it_exists
