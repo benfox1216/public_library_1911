@@ -58,4 +58,19 @@ class LibraryTest < Minitest::Test
     
     assert_equal publication_dates, @dpl.publication_time_frame_for(@charlotte_bronte)
   end
+  
+  def test_you_can_checkout_books
+    jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+    villette = @charlotte_bronte.write("Villette", "1853")
+    
+    mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
+    
+    assert_equal false, dpl.checkout(mockingbird)
+    assert_equal false, dpl.checkout(jane_eyre)
+    
+    dpl.add_author(charlotte_bronte)
+    dpl.add_author(harper_lee)
+
+    assert_equal true, dpl.checkout(jane_eyre)
+  end
 end
