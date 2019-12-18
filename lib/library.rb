@@ -37,6 +37,6 @@ class Library
   end
   
   def return(book)
-    
+    @checked_out_books.delete(book)
   end
 end
