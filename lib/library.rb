@@ -35,4 +35,8 @@ class Library
       false
     end
   end
+  
+  def return(book)
+    
+  end
 end

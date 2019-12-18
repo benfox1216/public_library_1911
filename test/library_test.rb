@@ -79,4 +79,21 @@ class LibraryTest < Minitest::Test
     @dpl.checkout(jane_eyre)
     assert_equal [jane_eyre], @dpl.checked_out_books
   end
+  
+  def test_you_can_return_books
+    jane_eyre = @charlotte_bronte.write("Jane Eyre", "October 16, 1847")
+    villette = @charlotte_bronte.write("Villette", "1853")
+    
+    mockingbird = @harper_lee.write("To Kill a Mockingbird", "July 11, 1960")
+
+    @dpl.add_author(@charlotte_bronte)
+    @dpl.add_author(@harper_lee)
+    @dpl.checkout(jane_eyre)
+    
+    assert_equal assert_equal [jane_eyre], @dpl.checked_out_books
+    
+    @dpl.return(jane_eyre)
+    
+    assert_equal assert_equal [], @dpl.checked_out_books
+  end
 end
